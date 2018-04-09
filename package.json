@@ -1,0 +1,16 @@
+{
+  "name": "test_webpack4",
+  "version": "1.0.0",
+  "description": "Learning Webpack 4",
+  "main": "index.js",
+  "scripts": {
+    "build" : "webpack --mode production"
+  },
+  "author": "Mohamad Ilham Ramadhan",
+  "license": "ISC",
+  "devDependencies": {
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14"
+  }
+}
