@@ -10,7 +10,10 @@ const commonConfig = merge([
 				title: "Belajar Webpack 4",
 			}),
 		],
-	}
+	},
+	parts.loadCSS(),
+	parts.loadLess(),
+	parts.loadSass(),
 ]);
 
 const productionConfig = merge([]);

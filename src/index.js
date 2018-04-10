@@ -1,3 +1,7 @@
+import "./main.css";
+import "./main.less";
+import "./main.scss";
+
 import component from './component';
 
 const foo = require('./test');
