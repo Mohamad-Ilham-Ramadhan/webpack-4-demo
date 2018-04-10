@@ -1,3 +1,8 @@
+/*@import './other.css';*/
 body {
 	background: cornsilk;
+}
+
+.nasdem {
+	color: blue;
 }
