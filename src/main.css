@@ -1,4 +1,6 @@
-/*@import './other.css';*/
+@import "./other.css";
+@import "./other1.css";
+
 body {
 	background: cornsilk;
 }

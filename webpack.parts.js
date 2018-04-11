@@ -1,3 +1,9 @@
+const PurifyCSSPlugin = require("purifycss-webpack");
+
+exports.purifyCSS = ( { paths } ) => ({
+	plugins: [new PurifyCSSPlugin( { paths } )],
+})
+
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 exports.extractCSS = ( { include, exclude, use } ) => {
@@ -20,12 +26,35 @@ exports.extractCSS = ( { include, exclude, use } ) => {
 						use,
 						fallback: "style-loader"
 					})
+				},
+				{
+					test: /\.scss$/,
+					use: plugin.extract({
+						use: [
+							{
+								loader: 'css-loader',
+								options: {
+									importLoaders: 1
+								}
+							},
+							'sass-loader',
+						],
+						fallback: 'style-loader'
+					})
+				},
+				{
+					test: /\.less$/,
+					use: plugin.extract({
+						use: ['css-loader', 'less-loader'],
+						fallback: 'style-loader'
+					})
 				}
 			]
 		},
 		plugins: [plugin],
 	}
 };
+
 
 exports.devServer = ( { host, port } = {} ) => ({
 	devServer: {

@@ -1,17 +1,17 @@
 const path = require("path");
+
 export default( text = 'Hello Webpack 4') => {
 	const element = document.createElement('div');
-	element.classList.add('hello');
+	element.className = "pure-button";
 	element.innerHTML = text;
 
-	const name = document.createElement('p');
-	name.innerHTML = 'Mohamad Ilham Ramadhan';
-	name.classList.add('name');
+	return element;
+};
 
-	document.body.appendChild(name);
-
-	const x = path.resolve(__dirname, 'dist/assets');
-	console.log( x );
+export const name = () => {
+	const element = document.createElement('div');
+	element.className = 'name';
+	element.innerHTML = 'Mohamad Ilham Ramadhan';
 
 	return element;
 };
