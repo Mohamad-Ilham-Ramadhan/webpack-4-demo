@@ -1,3 +1,23 @@
 .other {
 	position: relative;
+	box-shadow: 0px 0px 1px 1px rgba( 0, 0, 0, .2 );
+	transform: rotateX(150deg);
+}
+
+.fdsa-other {
+	color: blue;
+	border-radius: 3px;
+	transform: rotateX(150deg);
+}
+
+.ffff-other-meledog {
+	color: blue;
+	border-radius: 3px;
+	transform: rotateX(150deg);
+}
+
+.unused-other-fjjf {
+	color: blue;
+	border-radius: 3px;
+	transform: rotateX(150deg);
 }

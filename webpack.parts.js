@@ -1,4 +1,12 @@
 const PurifyCSSPlugin = require("purifycss-webpack");
+const autoprefixer = require("autoprefixer");
+
+exports.autoprefix = () => ({
+	loader: "postcss-loader",
+	options: {
+		plugins: [autoprefixer],
+	}
+})
 
 exports.purifyCSS = ( { paths } ) => ({
 	plugins: [new PurifyCSSPlugin( { paths } )],
@@ -37,6 +45,12 @@ exports.extractCSS = ( { include, exclude, use } ) => {
 									importLoaders: 1
 								}
 							},
+							{
+								loader: "postcss-loader",
+								options: {
+									plugins: [autoprefixer],
+								}
+							},
 							'sass-loader',
 						],
 						fallback: 'style-loader'
@@ -45,7 +59,13 @@ exports.extractCSS = ( { include, exclude, use } ) => {
 				{
 					test: /\.less$/,
 					use: plugin.extract({
-						use: ['css-loader', 'less-loader'],
+						use: ['css-loader', 
+							{
+								loader: "postcss-loader",
+								options: {
+									plugins: [autoprefixer],
+								}
+							}, 'less-loader'],
 						fallback: 'style-loader'
 					})
 				}

@@ -1,9 +1,15 @@
 .name {
 	font-size: 2rem;
-	color: green;
+		color: blue;
+	border-radius: 3px;
+	transform: rotateX(150deg);
 	.name-ganteng {
 		color: tomato;
 	}
 
+}
+
+.unused-sass-blabla {
+	border-raduis: 1px;
 }
 

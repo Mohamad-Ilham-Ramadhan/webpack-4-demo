@@ -15,3 +15,11 @@ export const name = () => {
 
 	return element;
 };
+
+export const unusedOther1 = () => {
+	const element = document.createElement('div');
+	element.className = 'unused-other-1';
+	element.innerHTML = 'Mohamad Ilham Ramadhan';
+
+	return element;
+};

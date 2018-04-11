@@ -1,10 +1,16 @@
-@import "./other.css";
-@import "./other1.css";
-
 body {
 	background: cornsilk;
+		border-radius: 3px;
 }
 
 .nasdem {
 	color: blue;
+	border-radius: 3px;
+	transform: rotateX(150deg);
+}
+
+.asdf-main {
+	color: blue;
+	border-radius: 3px;
+	transform: rotateX(150deg);
 }

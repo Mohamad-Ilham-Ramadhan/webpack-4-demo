@@ -5,4 +5,11 @@
 	background: blue;
 	position: aboslute;
 	top: 21px;
+	transform: rotateZ(90deg);
+}
+
+.unused-other-1 {
+	color: blue;
+	border-radius: 3px;
+	transform: rotateX(150deg);
 }
