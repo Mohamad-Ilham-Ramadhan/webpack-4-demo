@@ -19,6 +19,13 @@ const commonConfig = merge([
 	},
 	parts.loadLess(),
 	parts.loadSass(),
+	parts.loadFonts({
+		options: {
+			name: '[name].[ext]',
+			publicPath: 'assets/fonts/',
+			outputPath: 'assets/fonts/',
+		}
+	}),
 ]);
 
 const productionConfig = merge([
@@ -32,8 +39,8 @@ const productionConfig = merge([
 		options: {
 			limit: 1500,
 			name: "[name].[ext]",
-			publicPath: 'assets/',
-			outputPath: 'assets/',
+			publicPath: 'assets/images',
+			outputPath: 'assets/images',
 		}
 	} ),
 ]);

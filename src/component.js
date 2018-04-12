@@ -33,3 +33,11 @@ export const svg = () => {
 
 	return element;
 };
+
+export const loader = () => {
+	const element = document.createElement('div');
+	element.innerHTML = 'Loading...';
+	element.className = 'fa fa-spinner';
+
+	return element;
+}

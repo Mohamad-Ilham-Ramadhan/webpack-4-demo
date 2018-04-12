@@ -32,6 +32,8 @@
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.5",
+    "font-awesome": "^4.7.0",
     "purecss": "^1.0.0"
   }
 }

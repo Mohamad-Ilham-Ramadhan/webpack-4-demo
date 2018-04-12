@@ -153,10 +153,23 @@ exports.loadImages = ( { include, exclude, options } = {} ) => ({
 					loader: 'file-loader',
 					options : {
 						name: "[name].[ext]",
-						publicPath: 'assets/',
-						outputPath: 'assets/',
+						publicPath: 'assets/images',
+						outputPath: 'assets/images',
 					}
 				}
+			}
+		]
+	}
+});
+
+exports.loadFonts = ( { include, exclude, options } = {} ) => ({
+	module: {
+		rules: [
+			{
+				// Capture eot, tff, woff, and woff2
+				test: /\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+				loader: 'file-loader',
+				options,
 			}
 		]
 	}
