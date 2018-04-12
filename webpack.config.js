@@ -17,6 +17,9 @@ const commonConfig = merge([
 			}),
 		],
 	},
+	parts.loadJavaScript({
+		include: PATHS.app
+	}),
 	parts.loadLess(),
 	parts.loadSass(),
 	parts.loadFonts({
