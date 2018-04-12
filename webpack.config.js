@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require("path");
@@ -15,7 +16,14 @@ const commonConfig = merge([
 			new HtmlWebpackPlugin({
 				title: "Belajar Webpack 4",
 			}),
+			// Disable code splitting
+			// new webpack.optimize.LimitChunkCountPlugin({
+			// 	maxChunks: 1
+			// })
 		],
+		// output: { // buggy
+		// 	chunkFilename: "chunk.[name].js"
+		// }
 	},
 	parts.loadJavaScript({
 		include: PATHS.app
