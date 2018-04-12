@@ -46,6 +46,9 @@ const productionConfig = merge([
 			outputPath: 'assets/images',
 		}
 	} ),
+	parts.generateSourceMaps({
+		type: "source-map" // the best quality of separate source-map but the most slow
+	}),
 ]);
 
 const developmentConfig = merge([
@@ -55,7 +58,10 @@ const developmentConfig = merge([
 		port: process.env.PORT, // for example `3030` 
 	} ),
 	parts.loadCSS(),
-	parts.loadImages()
+	parts.loadImages(),
+	parts.generateSourceMaps({
+		type: "cheap-module-eval-source-map"
+	})
 ]); 
 
 module.exports = mode => {
