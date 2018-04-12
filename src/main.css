@@ -1,6 +1,9 @@
 body {
 	background: cornsilk;
-		border-radius: 3px;
+	border-radius: 3px;
+	background-image: url(./logo.jpeg);
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 .nasdem {

@@ -136,3 +136,28 @@ exports.loadSass = ( { include, exclude } = {} ) => ({
 		]
 	}
 });
+
+exports.loadImages = ( { include, exclude, options } = {} ) => ({
+	module: {
+		rules: [
+			{
+				test: /\.(png|jpg|jpeg)$/,
+				use: {
+					loader: 'url-loader',
+					options
+				}
+			},
+			{
+				test: /\.svg$/,
+				use: {
+					loader: 'file-loader',
+					options : {
+						name: "[name].[ext]",
+						publicPath: 'assets/',
+						outputPath: 'assets/',
+					}
+				}
+			}
+		]
+	}
+});
