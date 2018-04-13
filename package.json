@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --env development",
     "build": "webpack --env production",
+    "build:stats": "webpack --env production  --profile --progress --json > stats.json"
   },
   "author": "Mohamad Ilham Ramadhan",
   "license": "ISC",
