@@ -9,10 +9,14 @@ import "./other1.css";
 import "./main.scss";
 import "./main.less";
 
+import { bake } from "./shake";
+
 import component, { name, unusedOther1, svg, loader } from './component';
 import commonConfig from './merge';
 
 const foo = require('./test');
+
+bake();
 
 console.log( foo.foo() );
 console.log( commonConfig );
