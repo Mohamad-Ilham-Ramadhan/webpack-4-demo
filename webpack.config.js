@@ -88,8 +88,14 @@ const productionConfig = merge([
 						chunks: "initial"
 					}
 				}
-			}
-		}
+			},
+			// Extracting a manifest 
+			runtimeChunk: {
+				name: "manifest"
+			},
+			// minimize: false,
+		},
+		recordsPath: path.join(__dirname, "records.json"),
 	},
 	parts.attachRevision(),
 ]);

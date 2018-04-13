@@ -18,6 +18,7 @@ const foo = require('./test');
 
 bake();
 bake();
+// bake();
 
 console.log( foo.foo() );
 console.log( commonConfig );
