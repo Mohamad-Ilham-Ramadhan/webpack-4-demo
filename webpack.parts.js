@@ -7,6 +7,31 @@ const UglifyWebpackPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const cssnano = require("cssnano");
 
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+// For Multiple Page:
+exports.page = ({
+	path = "",
+	template = require.resolve(
+		"html-webpack-plugin/default_index.ejs"
+	),
+	title,
+	entry,
+	output,
+	chunks,
+} = {}) => ({
+	entry,
+	output,
+	plugins: [
+		new HtmlWebpackPlugin({
+			chunks,
+			filename: `${path && path + "/"}index.html`,
+			template,
+			title,
+		}),
+	],
+});
+
 exports.minifyCSS = ( { options } ) => ({
 	plugins: [
 		new OptimizeCSSAssetsPlugin({

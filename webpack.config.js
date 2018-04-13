@@ -1,6 +1,6 @@
 const webpack = require("webpack");
 const merge = require("webpack-merge");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require("path");
 const glob = require("glob");
 
@@ -13,20 +13,20 @@ const PATHS = {
 }
 
 const commonConfig = merge([
-	{	
-		plugins: [
-			new HtmlWebpackPlugin({
-				title: "Belajar Webpack 4",
-			}),
-			// Disable code splitting
-			// new webpack.optimize.LimitChunkCountPlugin({
-			// 	maxChunks: 1
-			// })
-		],
-		// output: { // buggy
-		// 	chunkFilename: "chunk.[name].js"
-		// }
-	},
+	// {	
+	// 	plugins: [
+	// 		new HtmlWebpackPlugin({
+	// 			title: "Belajar Webpack 4",
+	// 		}),
+	// 		// Disable code splitting
+	// 		// new webpack.optimize.LimitChunkCountPlugin({
+	// 		// 	maxChunks: 1
+	// 		// })
+	// 	],
+	// 	// output: { // buggy
+	// 	// 	chunkFilename: "chunk.[name].js"
+	// 	// }
+	// },
 	parts.loadJavaScript({
 		include: PATHS.app
 	}),
@@ -115,15 +115,56 @@ const developmentConfig = merge([
 	} ),
 	parts.loadCSS(),
 	parts.loadImages(),
-	parts.generateSourceMaps({
-		type: "cheap-module-eval-source-map"
-	})
+	// parts.generateSourceMaps({
+	// 	type: "cheap-module-eval-source-map"
+	// })
 ]); 
 
 module.exports = mode => {
-	if ( mode === 'production') {
-		return merge(commonConfig, productionConfig, { mode } );
-	} 
+	// if ( mode === 'production') {
+	// 	return merge(commonConfig, productionConfig, { mode } );
+	// } 
 
-	return merge( commonConfig, developmentConfig, { mode } );
+	// return merge( commonConfig, developmentConfig, { mode } );
+
+	// Multiple pages: 
+
+	// As HtmlWebpackPlugin picks up all chunks by default, you have to adjust it to pick up only the chunks that are related to each page: by declaring chuncks
+	const pages = [
+		parts.page({
+			title: "Webpack demo",
+			entry: {
+				app: PATHS.app,
+			},
+			// To work on local server
+			output: {
+				publicPath: ''
+			},
+			chunks: ['app', 'manifest', 'vendor'],
+		}),
+		parts.page({
+			title: "Another demo",
+			path: "another",
+			entry: {
+				another: path.join(PATHS.app, "another.js"),
+			},
+			// To work on local server
+			output: {
+				publicPath: '../'
+			},
+			chunks: ['another', 'manifest', 'vendor'],
+		}),
+	];
+	const config = mode === "production" ? productionConfig : developmentConfig;
+
+	// Multi Compiler mode: buat bedain output biar bisa dimuat di local server `localhost` karena ada masalah di path, kalo udah di deploy kayanya gak usah bedain output deh.
+	
+	return pages.map( page => 
+		merge( commonConfig, config, page, { mode })
+	);
+	
+	// Dropping the multi-compiler mode
+	// Cons: Given the configuration isn't in the multi-compiler form anymore, processing can be slower.
+	
+	// return merge([ commonConfig, config, { mode }].concat(pages) );
 }
