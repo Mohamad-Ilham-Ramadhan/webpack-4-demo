@@ -58,7 +58,9 @@ exports.extractCSS = ( { include, exclude, use } ) => {
 	const plugin = new ExtractTextPlugin({
 		// `allChunks` is needed to extract from extracted chunks as well.
 		allChunks: true,
-		filename: "[name].css",
+		// filename: "[name].[contentHash:4].css", // error bug,
+		// filename: "[name].[hash:4].css", // masih dipertanyakan apakah ini baik
+		filename: "[name].css", 
 	});
 
 	return {
@@ -203,11 +205,7 @@ exports.loadImages = ( { include, exclude, options } = {} ) => ({
 				test: /\.svg$/,
 				use: {
 					loader: 'file-loader',
-					options : {
-						name: "[name].[ext]",
-						publicPath: 'assets/images',
-						outputPath: 'assets/images',
-					}
+					options
 				}
 			}
 		]
