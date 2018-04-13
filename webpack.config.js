@@ -43,6 +43,16 @@ const commonConfig = merge([
 
 const productionConfig = merge([
 	parts.clean(PATHS.build),
+	parts.minifyJavaScript(),
+	parts.minifyCSS({
+		options: {
+			discardComments: {
+				removeAll: true,
+			},
+			// Run cssnano in safe mode to avoid potentially unsafe transformation
+			safe: true,
+		}
+	}),
 	parts.extractCSS( { 
 		use: ["css-loader", parts.autoprefix()],
 	} ),
@@ -57,6 +67,7 @@ const productionConfig = merge([
 			outputPath: 'assets/images',
 		}
 	} ),
+	// uglifyjs override this (.js file only)
 	parts.generateSourceMaps({
 		type: "source-map" // the best quality of separate source-map but the most slow
 	}),

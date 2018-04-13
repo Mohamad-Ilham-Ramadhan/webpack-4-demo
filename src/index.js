@@ -17,6 +17,9 @@ const foo = require('./test');
 console.log( foo.foo() );
 console.log( commonConfig );
 
+let person = 'mohamad ilham ramadhan';
+console.log( person );
+
 document.body.appendChild(component());
 document.body.appendChild(name());
 document.body.appendChild(unusedOther1());
