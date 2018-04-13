@@ -59,8 +59,8 @@ exports.extractCSS = ( { include, exclude, use } ) => {
 		// `allChunks` is needed to extract from extracted chunks as well.
 		allChunks: true,
 		// filename: "[name].[contentHash:4].css", // error bug,
-		// filename: "[name].[hash:4].css", // masih dipertanyakan apakah ini baik
-		filename: "[name].css", 
+		filename: "[name].[md5:contenthash:hex:4].css", // Bekerja dengan baik!!
+		// filename: "[name].css", 
 	});
 
 	return {

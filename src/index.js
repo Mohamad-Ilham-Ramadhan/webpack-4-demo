@@ -17,6 +17,7 @@ import commonConfig from './merge';
 const foo = require('./test');
 
 bake();
+bake();
 
 console.log( foo.foo() );
 console.log( commonConfig );
