@@ -8,6 +8,8 @@ const parts = require("./webpack.parts");
 
 const PATHS = {
 	app: path.join(__dirname, "src"),
+
+	build: path.join(__dirname, "dist"),
 }
 
 const commonConfig = merge([
@@ -40,6 +42,7 @@ const commonConfig = merge([
 ]);
 
 const productionConfig = merge([
+	parts.clean(PATHS.build),
 	parts.extractCSS( { 
 		use: ["css-loader", parts.autoprefix()],
 	} ),
@@ -58,6 +61,7 @@ const productionConfig = merge([
 		type: "source-map" // the best quality of separate source-map but the most slow
 	}),
 	{
+		// Bundle Splitting: splitting the main and the vendor dependencies
 		optimization: {
 			splitChunks: {
 				cacheGroups: {
@@ -70,6 +74,7 @@ const productionConfig = merge([
 			}
 		}
 	},
+	parts.attachRevision(),
 ]);
 
 const developmentConfig = merge([

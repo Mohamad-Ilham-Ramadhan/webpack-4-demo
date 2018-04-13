@@ -1,5 +1,25 @@
 const PurifyCSSPlugin = require("purifycss-webpack");
 const autoprefixer = require("autoprefixer");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const webpack = require("webpack");
+const GitRevisionPlugin = require("git-revision-webpack-plugin");
+
+exports.attachRevision = () => ({
+	plugins: [
+		new webpack.BannerPlugin({
+			banner: new GitRevisionPlugin().version(),
+		})
+	],
+})
+
+exports.generateSourceMaps = ( { type } ) => ({
+	devtool: type
+})
+
+// To Clean the build directory between buildssss.
+exports.clean = path => ({
+	plugins: [new CleanWebpackPlugin( [path] )],
+})
 
 exports.autoprefix = () => ({
 	loader: "postcss-loader",
@@ -188,6 +208,4 @@ exports.loadFonts = ( { include, exclude, options } = {} ) => ({
 	}
 });
 
-exports.generateSourceMaps = ( { type } ) => ({
-	devtool: type
-})
+
