@@ -7,7 +7,8 @@
     "start": "webpack-dev-server --env development",
     "build": "webpack --env production",
     "build:stats": "webpack --env production  --profile --progress --json > stats.json",
-    "build:ssr": "webpack --config webpack.ssr.js"
+    "build:ssr": "webpack --config webpack.ssr.js",
+    "build:i18n" : "webpack --config webpack.i18n.js"
   },
   "author": "Mohamad Ilham Ramadhan",
   "license": "ISC",
@@ -28,6 +29,7 @@
     "git-revision-webpack-plugin": "^2.5.1",
     "glob": "^7.1.2",
     "html-webpack-plugin": "^3.2.0",
+    "i18n-webpack-plugin": "^1.0.0",
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
     "node-sass": "^4.8.3",
