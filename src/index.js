@@ -11,22 +11,20 @@ import "./main.less";
 
 import { bake } from "./shake";
 
-import component, { name, unusedOther1, svg, loader } from './component';
+import component, { name, unusedOther1, svg, loader, lazy } from './component';
 import commonConfig from './merge';
-
-const foo = require('./test');
 
 bake();
 bake();
 // bake();
 
-console.log( foo.foo() );
 console.log( commonConfig );
 
 let person = 'mohamad ilham ramadhan';
 console.log( person );
 
 document.body.appendChild(component());
+document.body.appendChild(lazy());
 document.body.appendChild(name());
 document.body.appendChild(unusedOther1());
 document.body.appendChild(svg());

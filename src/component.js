@@ -1,7 +1,27 @@
+import Worker from "worker-loader!./worker";
+
+export default () => {
+	const element = document.createElement("h1");
+	const worker = new Worker();
+	const state = { text: "foo" };
+
+	worker.addEventListener("message", ( { data: { tuxt } } ) => {
+		state.text = tuxt;
+
+		console.log( tuxt );
+		element.innerHTML = tuxt;
+	});
+
+	element.innerHTML = state.text;
+	element.onclick = () => worker.postMessage( { text: state.text } );
+
+	return element; 
+}
+
 const path = require("path");
 import svgImg from './react-1.svg';
 
-export default( text = 'Hello Webpack 4') => {
+export const lazy = ( text = 'Hello Webpack 4') => {
 	const element = document.createElement('div');
 	element.className = "pure-button";
 	element.innerHTML = text;
