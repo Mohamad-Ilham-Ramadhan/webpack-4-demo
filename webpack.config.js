@@ -70,6 +70,7 @@ const productionConfig = merge([
 		output: {
 			chunkFilename: "[name].[chunkhash:4].js",
 			filename: "[name].[chunkhash:4].js",
+			publicPath: '/webpack-4-demo/'
 		}
 	},
 	parts.loadImages( {
@@ -137,9 +138,9 @@ module.exports = mode => {
 				app: PATHS.app,
 			},
 			// To work on local server
-			output: {
-				publicPath: ''
-			},
+			// output: {
+			// 	publicPath: ''
+			// },
 			chunks: ['app', 'manifest', 'vendor'],
 		}),
 		parts.page({
@@ -150,9 +151,9 @@ module.exports = mode => {
 			},
 			template: 'src/template.html',
 			// To work on local server
-			output: {
-				publicPath: '../'
-			},
+			// output: {
+			// 	publicPath: '../'
+			// },
 			chunks: ['another', 'manifest', 'vendor'],
 		}),
 	];

@@ -14,7 +14,8 @@
     "test:karma": "karma start",
     "test:karma:watch": "karma start --auto-watch --no-single-run",
     "test:jest:watch": "jest --watch",
-    "test:jest": "jest"
+    "test:jest": "jest",
+    "deploy": "gh-pages -d build"
   },
   "author": "Mohamad Ilham Ramadhan",
   "license": "ISC",
@@ -33,6 +34,7 @@
     "express": "^4.16.3",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
+    "gh-pages": "^1.1.0",
     "git-revision-webpack-plugin": "^2.5.1",
     "glob": "^7.1.2",
     "html-webpack-plugin": "^3.2.0",
