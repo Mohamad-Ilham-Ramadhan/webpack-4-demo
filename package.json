@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --env development",
     "build": "webpack --env production",
-    "build:stats": "webpack --env production  --profile --progress --json > stats.json"
+    "build:stats": "webpack --env production  --profile --progress --json > stats.json",
+    "build:ssr": "webpack --config webpack.ssr.js"
   },
   "author": "Mohamad Ilham Ramadhan",
   "license": "ISC",
@@ -16,9 +17,12 @@
     "babel-loader": "^7.1.4",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "browser-refresh": "^1.7.2",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.11",
     "cssnano": "^3.10.0",
+    "express": "^4.16.3",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
     "git-revision-webpack-plugin": "^2.5.1",

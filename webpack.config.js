@@ -148,6 +148,7 @@ module.exports = mode => {
 			entry: {
 				another: path.join(PATHS.app, "another.js"),
 			},
+			template: 'src/template.html',
 			// To work on local server
 			output: {
 				publicPath: '../'
